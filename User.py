@@ -3,9 +3,15 @@ import jwt
 import datetime
 
 class User:
-    SECRET_KEY = 'secret_key'  
+    username: str
+    password: str
+    name: str
+    email: str
+    phone_number: str 
+    SECRET_KEY = 'secret_key' 
+    
 
-    def init(self, username, password, name, email, phone_number):
+    def __init__(self, username, password, name, email, phone_number):
         self.username = username
         self.__password_hash = self.hash_password(password)
         self.name = name
@@ -27,7 +33,8 @@ class User:
             'username': self.username,
             'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=1)  
         }
-        return jwt.encode(payload, self.SECRET_KEY, algorithm='HS256')
+        #return jwt.encode(payload, self.SECRET_KEY, algorithm='HS256')
+        return payload
 
     def login(self, password):
        
