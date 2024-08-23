@@ -7,15 +7,15 @@ from User import User
 
 class UserCreate(BaseModel):
     username: str
-    password: str
+    password: str = Field(min_length = 8)
     name: str
     email: str
-    phone_number: str
+    phone_number: str = Field(min_length = 11)
     
 
 class LoginRequest(BaseModel):
     username: str
-    password: str
+    password: str = Field(min_length = 8)
 
 
 users_db = [User("johndoe","securepassword","John Doe","john.doe@example.com","123-456-7890"),
