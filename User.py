@@ -33,8 +33,7 @@ class User:
             'username': self.username,
             'exp': datetime.datetime.utcnow() + datetime.timedelta(hours=1)  
         }
-        #return jwt.encode(payload, self.SECRET_KEY, algorithm='HS256')
-        return payload
+        return jwt.encode(payload, self.SECRET_KEY, algorithm='HS256')
 
     def login(self, password):
        
